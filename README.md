@@ -7,7 +7,7 @@ Student Management Dashboard assessment for the Frontend Developer role.
 Clone the repository and install dependencies:
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/noelams/frontend-developer-assessment.git
 cd frontend-developer-assessment
 npm install
 ```
