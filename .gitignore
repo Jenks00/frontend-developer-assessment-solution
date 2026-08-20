@@ -43,4 +43,5 @@ next-env.d.ts
 # claude code
 CLAUDE.md
 BUILD_GUIDE.md
+AGENTS.md
 .claude/
