@@ -6,6 +6,7 @@ import { StatCard } from '@/components/dashboard/StatCard';
 import { ClassCard } from '@/components/classes/ClassCard';
 import { LoadingState } from '@/components/common/LoadingState';
 import { ErrorState } from '@/components/common/ErrorState';
+import { EmptyState } from '@/components/common/EmptyState';
 import { useClasses } from '@/hooks/useClasses';
 import { useStudents } from '@/hooks/useStudents';
 
@@ -91,10 +92,11 @@ export default function DashboardPage() {
             </div>
 
             {classes.length === 0 ? (
-              <p className="rounded-xl border border-dashed border-border py-10 text-center text-sm text-muted-foreground">
-                <GraduationCap className="mx-auto mb-2 size-5" aria-hidden />
-                No classes have been created yet.
-              </p>
+              <EmptyState
+                icon={GraduationCap}
+                title="No classes yet"
+                description="Classes will show up here once they're created."
+              />
             ) : (
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {classes.slice(0, 6).map((schoolClass) => (
