@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
-// Module-scoped so the worker is started at most once even when this
+// Scoped to the module so the worker is started at most once even when this
 // effect runs twice under React StrictMode in development.
 let mockingReady: Promise<unknown> | undefined;
 

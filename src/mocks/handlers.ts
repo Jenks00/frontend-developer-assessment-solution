@@ -3,9 +3,7 @@ import { students } from './data/students';
 import { classes } from './data/classes';
 
 export const handlers = [
-  // ----------------------------------------
   // GET /api/classes
-  // ----------------------------------------
   http.get('/api/classes', async () => {
     await delay(500);
 
@@ -14,9 +12,7 @@ export const handlers = [
     });
   }),
 
-  // ----------------------------------------
   // GET /api/classes/:classId
-  // ----------------------------------------
   http.get('/api/classes/:classId', async ({ params }) => {
     await delay(500);
 
@@ -40,9 +36,7 @@ export const handlers = [
     return HttpResponse.json(schoolClass);
   }),
 
-  // ----------------------------------------
   // GET /api/classes/:classId/students
-  // ----------------------------------------
   http.get(
     '/api/classes/:classId/students',
     async ({ params, request }) => {
@@ -75,7 +69,7 @@ export const handlers = [
         schoolClass.studentIds.includes(student.id)
       );
 
-      // Server-side search by name or student ID
+      // Search performed on the server by name or student ID
       if (search) {
         classStudents = classStudents.filter((student) => {
           const fullName =
@@ -95,9 +89,7 @@ export const handlers = [
     }
   ),
 
-  // ----------------------------------------
   // GET /api/students
-  // ----------------------------------------
   http.get('/api/students', async () => {
     await delay(500);
 
@@ -107,9 +99,7 @@ export const handlers = [
     });
   }),
 
-  // ----------------------------------------
   // GET /api/students/:studentId
-  // ----------------------------------------
   http.get('/api/students/:studentId', async ({ params }) => {
     await delay(500);
 
@@ -131,9 +121,7 @@ export const handlers = [
     return HttpResponse.json(student);
   }),
 
-  // ----------------------------------------
   // POST /api/classes/:classId/students
-  // ----------------------------------------
   http.post(
     '/api/classes/:classId/students',
     async ({ params, request }) => {
@@ -215,9 +203,7 @@ export const handlers = [
     }
   ),
 
-  // ----------------------------------------
   // DELETE /api/classes/:classId/students/:studentId
-  // ----------------------------------------
   http.delete(
   '/api/classes/:classId/students/:studentId',
   async ({ params }) => {

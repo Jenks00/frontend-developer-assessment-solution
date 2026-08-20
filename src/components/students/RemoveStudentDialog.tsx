@@ -67,7 +67,7 @@ export function RemoveStudentDialog({
               <>
                 <strong className="text-foreground">{fullName(student)}</strong>{' '}
                 will be removed from this class. They will remain enrolled at
-                the school and can be re-added at any time.
+                the school and can be added back at any time.
               </>
             )}
           </DialogDescription>

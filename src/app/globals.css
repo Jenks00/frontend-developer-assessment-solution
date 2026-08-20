@@ -49,7 +49,7 @@
 }
 
 :root {
-  /* Warm espresso / dark-brown palette — the app's single deliberate theme */
+  /* Warm espresso / dark brown palette, the app's single deliberate theme */
   --background: #16110d;
   --foreground: #f0e6da;
   --card: #201812;

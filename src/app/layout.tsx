@@ -19,7 +19,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'Schoolhouse — Student Management',
+  title: 'Schoolhouse Student Management',
   description: 'Frontend Developer Assessment',
 };
 
