@@ -76,10 +76,6 @@ export function Sidebar({
           );
         })}
       </ul>
-
-      <div className="mx-4 mb-4 rounded-lg bg-sidebar-accent/40 p-3 text-[11px] leading-relaxed text-sidebar-foreground/50">
-        Data served from the local mock API — changes reset on reload.
-      </div>
     </nav>
   );
 }
