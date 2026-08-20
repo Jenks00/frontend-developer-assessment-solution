@@ -2,6 +2,17 @@
 
 import { useEffect, useState } from 'react';
 
+// Module-scoped so the worker is started at most once even when this
+// effect runs twice under React StrictMode in development.
+let mockingReady: Promise<unknown> | undefined;
+
+function enableMocking(): Promise<unknown> {
+  mockingReady ??= import('@/mocks/browser').then(({ worker }) =>
+    worker.start({ onUnhandledRequest: 'bypass' })
+  );
+  return mockingReady;
+}
+
 export function MSWProvider({
   children,
 }: {
@@ -10,17 +21,13 @@ export function MSWProvider({
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    async function enableMocking() {
-      const { worker } = await import('@/mocks/browser');
-
-      await worker.start({
-        onUnhandledRequest: 'bypass',
-      });
-
-      setReady(true);
-    }
-
-    enableMocking();
+    let cancelled = false;
+    enableMocking().then(() => {
+      if (!cancelled) setReady(true);
+    });
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   if (!ready) {
