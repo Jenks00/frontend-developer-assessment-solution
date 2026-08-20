@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import { CheckCircle2, Search, UserPlus } from 'lucide-react';
+import { toast } from 'sonner';
 import {
   Dialog,
   DialogContent,
@@ -59,6 +60,7 @@ export function EnrollStudentDialog({
 
   async function handleEnroll() {
     if (!selectedId) return;
+    const student = students.find((s) => s.id === selectedId);
     setIsSubmitting(true);
     setError(null);
     try {
@@ -67,9 +69,14 @@ export function EnrollStudentDialog({
       setOpen(false);
       reset();
       onEnrolled();
+      toast.success(
+        student ? `${fullName(student)} was enrolled` : 'Student was enrolled'
+      );
     } catch (err) {
       setIsSubmitting(false);
-      setError(getErrorMessage(err));
+      const message = getErrorMessage(err);
+      setError(message);
+      toast.error(message);
     }
   }
 

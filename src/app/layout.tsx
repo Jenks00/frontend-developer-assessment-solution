@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Fraunces, Inter } from 'next/font/google';
+import { Toaster } from 'sonner';
 import './globals.css';
 import { MSWProvider } from '@/components/MSWProvider';
 import { QueryProvider } from '@/components/QueryProvider';
@@ -33,6 +34,7 @@ export default function RootLayout({
         <QueryProvider>
           <MSWProvider>
             <AppShell>{children}</AppShell>
+            <Toaster richColors position="top-right" />
           </MSWProvider>
         </QueryProvider>
       </body>

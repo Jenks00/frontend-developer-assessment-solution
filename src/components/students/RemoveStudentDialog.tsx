@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { AlertTriangle } from 'lucide-react';
+import { toast } from 'sonner';
 import {
   Dialog,
   DialogContent,
@@ -39,9 +40,12 @@ export function RemoveStudentDialog({
       setIsSubmitting(false);
       onRemoved();
       onOpenChange(false);
+      toast.success(`${fullName(student)} was removed from the class`);
     } catch (err) {
       setIsSubmitting(false);
-      setError(getErrorMessage(err));
+      const message = getErrorMessage(err);
+      setError(message);
+      toast.error(message);
     }
   }
 
